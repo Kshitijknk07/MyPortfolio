@@ -6,6 +6,17 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
     const [isScroll, setIsScroll] = useState(false)
     const sideMenuRef = useRef();
 
+    useEffect(() => {
+        const handleScroll = () => {
+            requestAnimationFrame(() => {
+                setIsScroll(window.scrollY > 50);
+            });
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     const openMenu = ()=>{
         sideMenuRef.current.style.transform = 'translateX(-16rem)'
     }
@@ -25,14 +36,11 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
 
     return (
         <>
-            <div className='fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] dark:hidden'>
-                <Image src={assets.header_bg_color} alt='' className='w-full' />
-            </div>
-
+            {/* Remove the gradient div completely */}
             <nav className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 ${
                 isScroll 
                     ? "bg-white/80 backdrop-blur-lg shadow-sm dark:bg-darkTheme/80 dark:shadow-white/20" 
-                    : ""
+                    : "bg-transparent"
             }`}>
                 <a href="#top" className="flex items-center mr-14">
                     <span className={`text-3xl font-semibold tracking-tight ${isDarkMode ? "text-white" : "text-gray-900"}`} style={{ fontFamily: "var(--font-dancing-script)" }}>KNK</span>

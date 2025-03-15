@@ -27,6 +27,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${outfit.className} ${ovo.className} antialiased leading-8 overflow-x-hidden dark:bg-darkTheme dark:text-white`}
       >
+        <div className="fixed inset-0 -z-10 bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/40 dotted-pattern dark:hidden" />
         {children}
       </body>
     </html>

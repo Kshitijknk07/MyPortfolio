@@ -6,17 +6,21 @@ import { motion } from "motion/react"
 const Services = () => {
   return (
     <motion.div
-    initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }}
-    transition={{ duration: 1 }}
-    id="services" className='w-full px-[12%] py-10 scroll-mt-20'>
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      id="services" 
+      className='w-full px-[12%] py-10 scroll-mt-20'>
 
-       <motion.h4
-       initial={{ y: -20, opacity: 0 }}
-       whileInView={{ y: 0, opacity: 1 }}
-       transition={{ delay: 0.3, duration: 0.5 }}
-       className='text-center mb-2 text-lg font-Ovo'>
-       What i Work With</motion.h4>
+      <motion.h4
+        initial={{ y: -10, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        viewport={{ once: true }}
+        className='text-center mb-2 text-lg font-Ovo'>
+        What i Work With
+      </motion.h4>
 
       <motion.h2
       initial={{ y: -20, opacity: 0 }}
