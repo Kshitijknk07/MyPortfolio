@@ -1,0 +1,35 @@
+{
+	"name": "sanju.sh",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro check && astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"check": "biome check ./src",
+		"lint": "biome lint ./src",
+		"format": "biome format --write ."
+	},
+	"dependencies": {
+		"@astrojs/check": "^0.9.4",
+		"@astrojs/cloudflare": "^12.4.0",
+		"@astrojs/mdx": "^4.2.3",
+		"@astrojs/rss": "^4.0.11",
+		"@astrojs/sitemap": "^3.3.0",
+		"@astrojs/tailwind": "^6.0.2",
+		"astro": "^5.6.1",
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
+		"lucide-react": "^0.487.0",
+		"tailwind-merge": "^3.1.0",
+		"tailwindcss": "^3.4.1",
+		"tailwindcss-animate": "^1.0.7",
+		"typescript": "^5.4.2"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.7.2",
+		"@tailwindcss/typography": "^0.5.10"
+	}
+}
