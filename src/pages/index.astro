@@ -9,9 +9,22 @@ import IconArrow from "../icons/arrow.astro";
 <Layout title="KSHITIJ NARAYAN KULKARNI | Aspiring Full Stack Engineer">
   <main
     id="content"
-    class="flex h-full min-h-screen flex-col items-center justify-center gap-8 py-10 px-4 sm:py-10 md:py-4 lg:gap-12 drawer drawer-end bg-gradient-to-br from-slate-50 to-gray-100"
+    class="flex h-full min-h-screen flex-col items-center justify-center gap-6 py-8 px-4 sm:py-8 md:py-4 lg:gap-8 drawer drawer-end bg-gradient-to-br from-slate-50 to-gray-100 relative overflow-hidden"
   >
-    <div class="flex flex-col items-center justify-center gap-6 mb-4">
+    <!-- Dotted background -->
+    <div
+      class="absolute inset-0 [background-size:20px_20px] [background-image:radial-gradient(#9ca3af_1.2px,transparent_1.2px)] opacity-60"
+    >
+    </div>
+    <!-- Radial gradient overlay for faded look -->
+    <div
+      class="pointer-events-none absolute inset-0 flex items-center justify-center [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"
+    >
+    </div>
+
+    <div
+      class="flex flex-col items-center justify-center gap-4 mb-2 relative z-10"
+    >
       <h1
         class="hover-grad-text font-roboto-condensed uppercase font-semibold text-5xl lg:text-[7rem] lg:leading-[8rem]"
       >
@@ -24,23 +37,34 @@ import IconArrow from "../icons/arrow.astro";
           class="font-roboto-condensed font-medium lowercase text-2xl lg:text-[2rem] lg:leading-[2rem]"
         >
           learning
-          <div class="group relative inline-block">
-            <div
-              class="transition-transform duration-300 group-hover:-translate-y-16"
-            >
+          <div
+            class="group relative inline-block overflow-hidden h-[2rem] lg:h-[2.2rem]"
+          >
+            <div class="animate-text-slide">
               <p
-                class="font-roboto-condensed font-medium lowercase text-2xl lg:text-[2rem] lg:leading-[2rem]"
+                class="font-roboto-condensed font-medium lowercase text-2xl lg:text-[2rem] lg:leading-[2rem] h-[2rem] lg:h-[2.2rem]"
               >
                 full stack development.
               </p>
-            </div>
-            <div
-              class="absolute inset-x-0 top-0 w-max translate-y-16 transition-transform duration-300 group-hover:translate-y-0"
-            >
               <p
-                class="font-roboto-condensed font-medium lowercase text-2xl lg:text-[2rem] lg:leading-[2rem] bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500"
+                class="font-serif italic font-medium lowercase text-2xl lg:text-[2rem] lg:leading-[2rem] h-[2rem] lg:h-[2.2rem] bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500"
               >
                 enthusiastically.
+              </p>
+              <p
+                class="font-serif italic font-medium lowercase text-2xl lg:text-[2rem] lg:leading-[2rem] h-[2rem] lg:h-[2.2rem] bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-500"
+              >
+                with passion.
+              </p>
+              <p
+                class="font-serif italic font-medium lowercase text-2xl lg:text-[2rem] lg:leading-[2rem] h-[2rem] lg:h-[2.2rem] bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-red-500"
+              >
+                through exploration.
+              </p>
+              <p
+                class="font-serif italic font-medium lowercase text-2xl lg:text-[2rem] lg:leading-[2rem] h-[2rem] lg:h-[2.2rem] bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 to-cyan-500"
+              >
+                by building projects.
               </p>
             </div>
           </div>
@@ -176,11 +200,13 @@ import IconArrow from "../icons/arrow.astro";
             </div>
           </div>
           <p
-            class="font-roboto-condensed font-thin text-sm md:text-base mt-3 text-rose-600 sm:text-inherit sm:group-hover:text-rose-600 leading-relaxed"
+            class="font-roboto-condensed font-thin text-sm md:text-base mt-3 text-rose-600 sm:text-inherit sm:group-hover:text-rose-600 leading-relaxed line-clamp-6"
           >
             I'm Kshitij Narayan Kulkarni, a CSE undergrad passionate about Full
-            Stack Development and DSA, focusing on backend tech like Node.js,
-            Go, and Rust, while building projects and exploring DevOps tools.
+            Stack Development and DSA. As a student developer, I'm learning
+            backend tech like Node.js, Go, and Rust while building projects to
+            strengthen my skills. I enjoy exploring DevOps tools and seeking new
+            programming challenges.
           </p>
         </section>
 
@@ -278,23 +304,29 @@ import IconArrow from "../icons/arrow.astro";
           >
             Let's connect and discuss opportunities!
           </p>
-          <a
-            data-ccursor
-            class="inline-flex items-center justify-center gap-2 font-roboto-condensed px-3 py-2 text-sm md:text-base text-amber-600 sm:text-inherit sm:group-hover:text-amber-600 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg shadow-lg backdrop-blur-sm hover:bg-opacity-30 transition-all duration-200 font-medium"
-            href="mailto:knk200407@gmail.com"
-            data-umami-event="Mail me click"
-            id="mail"
-          >
-            <img
-              class="aspect-square z-10 size-5 md:size-6 rounded-full"
-              src="/images/gmail.webp"
-              alt="Email"
-            />
-            knk200407@gmail.com
-            <span
-              class="w-2 h-2 rounded-full bg-green-400 duration-1000 animate-pulse"
-            ></span>
-          </a>
+          <div class="flex flex-col gap-2 mt-auto">
+            <a
+              data-ccursor
+              class="inline-flex items-center justify-start gap-2 font-roboto-condensed px-3 py-2 text-sm md:text-base text-amber-600 sm:text-inherit sm:group-hover:text-amber-600 bg-white bg-opacity-30 border border-white border-opacity-40 rounded-lg shadow-md backdrop-blur-sm hover:bg-opacity-50 transition-all duration-200 font-medium transform hover:-translate-y-0.5"
+              href="mailto:knk200407@gmail.com"
+              data-umami-event="Mail me click"
+              id="mail"
+            >
+              <img
+                class="aspect-square z-10 size-5 md:size-6 rounded-full"
+                src="/images/gmail.webp"
+                alt="Email"
+              />
+              knk200407@gmail.com
+              <span
+                class="ml-auto w-2 h-2 rounded-full bg-green-400 duration-1000 animate-pulse"
+              ></span>
+            </a>
+            <p
+              class="font-roboto-condensed text-xs text-amber-600/80 sm:text-zinc-500/80 sm:group-hover:text-amber-600/80 text-center mt-1"
+            >
+            </p>
+          </div>
         </div>
 
         <!-- Location card - spans 4 columns on md+ -->
@@ -306,7 +338,11 @@ import IconArrow from "../icons/arrow.astro";
           class="relative sm:cursor-none group overflow-hidden md:col-span-4 h-auto md:h-60 rounded-3xl border-4 border-white p-5 transition-all rotate-0 sm:rotate-1 sm:hover:rotate-0 shadow-lg hover:shadow-xl"
         >
           <div
-            class="absolute inset-0 z-10 bg-[url('/images/bang1.jpg')] bg-center bg-cover bg-no-repeat filter grayscale-0 sm:grayscale sm:group-hover:grayscale-0"
+            class="absolute inset-0 z-10 bg-[url('/images/bang1.jpg')] bg-center bg-cover bg-no-repeat scale-110 filter grayscale-0 sm:grayscale sm:group-hover:grayscale-0 transition-all duration-500 sm:group-hover:scale-120"
+          >
+          </div>
+          <div
+            class="absolute inset-0 z-15 bg-black bg-opacity-10 sm:bg-opacity-0 sm:group-hover:bg-opacity-10 transition-opacity duration-300"
           >
           </div>
           <div
@@ -322,14 +358,16 @@ import IconArrow from "../icons/arrow.astro";
           >
           </div>
           <div
-            class="absolute top-5 left-5 z-30 bg-black bg-opacity-40 px-3 py-2 rounded-md"
+            class="absolute top-5 left-5 z-30 bg-black bg-opacity-60 backdrop-blur-sm px-4 py-3 rounded-lg shadow-md"
           >
             <h3
               class="font-roboto-condensed font-semibold text-base md:text-lg text-white"
             >
               Location
             </h3>
-            <p class="font-roboto-condensed text-sm md:text-base text-white">
+            <p
+              class="font-roboto-condensed text-sm md:text-base text-white font-medium"
+            >
               BENGALURU, INDIA
             </p>
           </div>
@@ -369,3 +407,35 @@ import IconArrow from "../icons/arrow.astro";
     </div>
   </main>
 </Layout>
+
+<style>
+  @keyframes text-slide {
+    0%,
+    16% {
+      transform: translateY(0%);
+    }
+    20%,
+    36% {
+      transform: translateY(-20%);
+    }
+    40%,
+    56% {
+      transform: translateY(-40%);
+    }
+    60%,
+    76% {
+      transform: translateY(-60%);
+    }
+    80%,
+    96% {
+      transform: translateY(-80%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+
+  .animate-text-slide {
+    animation: text-slide 10s infinite;
+  }
+</style>
