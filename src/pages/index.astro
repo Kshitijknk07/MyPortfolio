@@ -55,11 +55,13 @@ const featuredProjects = projects
       {
         site.socialLinks && (
           <div class="social-links">
-            {site.socialLinks.map(({ platform, url }) => (
-              <a href={url} target="_blank" rel="noopener noreferrer">
-                {platform}
-              </a>
-            ))}
+            {site.socialLinks.map(
+              ({ platform, url }: { platform: string; url: string }) => (
+                <a href={url} target="_blank" rel="noopener noreferrer">
+                  {platform}
+                </a>
+              )
+            )}
           </div>
         )
       }
@@ -110,7 +112,7 @@ const featuredProjects = projects
               <p class="muted-text">{project.data.description}</p>
               {project.data.techs && (
                 <div class="tags">
-                  {project.data.techs.map((tech) => (
+                  {project.data.techs.map((tech: string) => (
                     <span>{tech}</span>
                   ))}
                 </div>
