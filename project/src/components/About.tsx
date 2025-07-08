@@ -317,7 +317,7 @@ export default function About() {
               <div className="space-y-6 text-slate-600 leading-relaxed">
                 <p>
                   My coding adventure began in 2023, when I wrote my first line
-                  of code and realized—hey, this is actually kind of magical!
+                  of code and realized hey, this is actually kind of magical!
                   Since then, I've been hooked on the thrill of turning ideas
                   into reality, one bug (and coffee) at a time.
                 </p>
