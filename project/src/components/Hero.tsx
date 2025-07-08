@@ -39,7 +39,7 @@ export default function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pb-20"
     >
       {/* Main content */}
       <div className="relative z-10 text-center px-4 max-w-5xl">
