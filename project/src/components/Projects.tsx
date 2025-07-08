@@ -107,9 +107,7 @@ export default function Projects() {
     <section ref={projectsRef} className="py-20 px-4 relative">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <div
-            className="inline-flex items-center gap-3 mb-6"
-          >
+          <div className="inline-flex items-center gap-3 mb-6">
             <div className="w-12 h-px bg-gradient-to-r from-transparent via-slate-400 to-transparent" />
             <Star className="w-5 h-5 text-slate-600" />
             <div className="w-12 h-px bg-gradient-to-r from-transparent via-slate-400 to-transparent" />
@@ -118,7 +116,8 @@ export default function Projects() {
             Projects
           </h2>
           <p className="text-xl md:text-2xl text-slate-600 max-w-2xl mx-auto font-light leading-relaxed font-display">
-            A curated selection of work that showcases the intersection of design, technology, and creative problem-solving.
+            A curated selection of work that showcases the intersection of
+            design, technology, and creative problem-solving.
           </p>
         </div>
 
