@@ -1,18 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  Code2,
-  Palette,
-  Rocket,
-  Users,
-  Award,
-  Calendar,
-  MapPin,
-  Coffee,
-  Zap,
-  Target,
-  Heart,
-  Star,
-} from "lucide-react";
+import { MapPin, Coffee, Book, Star } from "lucide-react";
+import gsap from "gsap";
 
 interface AnimatedDot {
   x: number;
@@ -36,63 +24,23 @@ export default function About() {
   const aboutRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isVisible, setIsVisible] = useState(false);
+  const [, setIsVisible] = useState(false);
   const dotsRef = useRef<AnimatedDot[]>([]);
   const particlesRef = useRef<FloatingParticle[]>([]);
   const animationRef = useRef<number>();
 
-  // Professional data
-  const stats = [
-    { icon: Calendar, label: "Years Experience", value: "5+" },
-    { icon: Code2, label: "Projects Completed", value: "50+" },
-    { icon: Users, label: "Clients Served", value: "25+" },
-    { icon: Award, label: "Awards Won", value: "8" },
-  ];
-
-  const specializations = [
+  const education = [
     {
-      icon: Code2,
-      title: "Full-Stack Development",
-      description:
-        "Building scalable web applications with modern frameworks and cloud technologies.",
-      skills: ["React", "Node.js", "TypeScript", "AWS"],
+      degree: "B.E. in Computer Science",
+      institution: "Dayananda Sagar College of Engineering (DSCE)",
+      year: "2022 - 2026",
+      details: [],
     },
     {
-      icon: Palette,
-      title: "UI/UX Design",
-      description:
-        "Creating intuitive user experiences with attention to detail and accessibility.",
-      skills: ["Figma", "Design Systems", "Prototyping", "User Research"],
-    },
-    {
-      icon: Rocket,
-      title: "Performance Optimization",
-      description:
-        "Optimizing applications for speed, scalability, and exceptional user experience.",
-      skills: ["Web Vitals", "Caching", "CDN", "Database Optimization"],
-    },
-  ];
-
-  const experience = [
-    {
-      company: "TechCorp Solutions",
-      role: "Senior Full-Stack Developer",
-      period: "2022 - Present",
-      achievements: [
-        "Led development of microservices architecture serving 1M+ users",
-        "Reduced application load time by 60% through optimization",
-        "Mentored 5 junior developers and established coding standards",
-      ],
-    },
-    {
-      company: "Digital Innovations Inc",
-      role: "Frontend Developer",
-      period: "2020 - 2022",
-      achievements: [
-        "Built responsive web applications using React and TypeScript",
-        "Implemented design system used across 15+ products",
-        "Collaborated with UX team to improve user engagement by 40%",
-      ],
+      degree: "12th Std PUC in Science",
+      institution: "Sri Chaitanya PU College (State Board)",
+      year: "2020 - 2022",
+      details: [],
     },
   ];
 
@@ -306,6 +254,49 @@ export default function About() {
     return () => observer.disconnect();
   }, []);
 
+  // GSAP animations for About story paragraphs using React refs
+  const aboutPara1 = useRef<HTMLParagraphElement>(null);
+  const aboutPara2 = useRef<HTMLParagraphElement>(null);
+  const aboutPara3 = useRef<HTMLParagraphElement>(null);
+  const aboutPara4 = useRef<HTMLParagraphElement>(null);
+  useEffect(() => {
+    if (
+      aboutPara1.current &&
+      aboutPara2.current &&
+      aboutPara3.current &&
+      aboutPara4.current
+    ) {
+      gsap.from(aboutPara1.current, {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        delay: 0.2,
+        ease: "power2.out",
+      });
+      gsap.from(aboutPara2.current, {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        delay: 0.5,
+        ease: "power2.out",
+      });
+      gsap.from(aboutPara3.current, {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        delay: 0.8,
+        ease: "power2.out",
+      });
+      gsap.from(aboutPara4.current, {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        delay: 1.1,
+        ease: "power2.out",
+      });
+    }
+  }, []);
+
   return (
     <section
       id="about"
@@ -350,34 +341,8 @@ export default function About() {
           </p>
         </div>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
-          {stats.map((stat, index) => {
-            const Icon = stat.icon;
-            return (
-              <div
-                key={stat.label}
-                className="text-center opacity-0 animate-fade-in-up"
-                style={{ animationDelay: `${0.8 + index * 0.1}s` }}
-              >
-                <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-slate-200/50 hover:bg-white/80 transition-all duration-500 group">
-                  <div className="w-12 h-12 bg-gradient-to-br from-slate-100 to-slate-200 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <Icon className="w-6 h-6 text-slate-700" />
-                  </div>
-                  <div className="text-3xl font-light text-slate-800 mb-2">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-slate-600 font-medium">
-                    {stat.label}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
         {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-16 mb-20">
+        <div className="grid lg:grid-cols-2 gap-16 mb-8">
           {/* Professional Summary */}
           <div className="space-y-8">
             <div
@@ -386,7 +351,7 @@ export default function About() {
             >
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-14 h-14 bg-gradient-to-br from-slate-100 to-slate-200 rounded-2xl flex items-center justify-center">
-                  <Heart className="w-7 h-7 text-slate-700" />
+                  <Book className="w-7 h-7 text-slate-700" />
                 </div>
                 <h3 className="text-2xl font-light text-slate-800">
                   My Journey
@@ -394,126 +359,69 @@ export default function About() {
               </div>
 
               <div className="space-y-6 text-slate-600 leading-relaxed">
-                <p>
-                  With over 5 years of experience in software development, I've
-                  had the privilege of working with startups and established
-                  companies to bring innovative ideas to life. My journey began
-                  with a fascination for how code can create beautiful,
-                  functional experiences.
+                <p ref={aboutPara1}>
+                  My coding adventure began in 2023, when I wrote my first line
+                  of code and realized—hey, this is actually kind of magical!
+                  Since then, I've been hooked on the thrill of turning ideas
+                  into reality, one bug (and coffee) at a time.
                 </p>
-
-                <p>
-                  I specialize in full-stack development with a strong focus on
-                  frontend technologies, user experience design, and performance
-                  optimization. Every project is an opportunity to push
-                  boundaries and create something meaningful.
+                <p ref={aboutPara2}>
+                  I love building things—sometimes they work, sometimes they
+                  break, but I always learn something new. Whether it's a quirky
+                  web app, a handy tool, or just a fun experiment, I enjoy the
+                  process of making stuff that others can use and smile at.
+                </p>
+                <p ref={aboutPara3}>
+                  My journey is all about curiosity, creativity, and a little
+                  bit of chaos. I believe the best projects are born from a mix
+                  of late-night inspiration, a dash of stubbornness, and the joy
+                  of seeing something come alive on the screen.
+                </p>
+                <p ref={aboutPara4}>
+                  If you ever want to talk code, brainstorm wild ideas, or just
+                  share a meme, I'm always up for it. Let's keep building,
+                  breaking, and learning—because that's where the real fun is!
                 </p>
 
                 <div className="flex items-center gap-6 pt-6 border-t border-slate-200/50">
                   <div className="flex items-center gap-2 text-sm">
                     <MapPin className="w-4 h-4 text-slate-500" />
-                    <span>San Francisco, CA</span>
+                    <span>bengaluru, India</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <Coffee className="w-4 h-4 text-slate-500" />
-                    <span>Coffee Enthusiast</span>
+                    <span>Tea Enthusiast</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Specializations */}
+          {/* Education Section */}
           <div className="space-y-6">
-            {specializations.map((spec, index) => {
-              const Icon = spec.icon;
-              return (
-                <div
-                  key={spec.title}
-                  className="bg-white/40 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/50 hover:bg-white/60 transition-all duration-500 group opacity-0 animate-fade-in-up"
-                  style={{ animationDelay: `${1.4 + index * 0.2}s` }}
-                >
-                  <div className="flex items-start gap-6">
-                    <div className="w-12 h-12 bg-gradient-to-br from-slate-100 to-slate-200 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                      <Icon className="w-6 h-6 text-slate-700" />
-                    </div>
-
-                    <div className="flex-1">
-                      <h4 className="text-lg font-medium text-slate-800 mb-3">
-                        {spec.title}
-                      </h4>
-                      <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                        {spec.description}
-                      </p>
-
-                      <div className="flex flex-wrap gap-2">
-                        {spec.skills.map((skill) => (
-                          <span
-                            key={skill}
-                            className="px-3 py-1 text-xs text-slate-600 bg-slate-100/60 rounded-lg border border-slate-200/50"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
+            {education.map((edu, index) => (
+              <div
+                key={edu.degree}
+                className="bg-white/40 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/50 hover:bg-white/60 transition-all duration-500 group opacity-0 animate-fade-in-up"
+                style={{ animationDelay: `${1.4 + index * 0.2}s` }}
+              >
+                <div className="flex items-start gap-6">
+                  <div className="w-12 h-12 bg-gradient-to-br from-slate-100 to-slate-200 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                    <Book className="w-6 h-6 text-slate-700" />
                   </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Experience Timeline */}
-        <div
-          className="bg-white/40 backdrop-blur-sm rounded-3xl p-10 border border-slate-200/50 opacity-0 animate-fade-in-up"
-          style={{ animationDelay: "2s" }}
-        >
-          <div className="flex items-center gap-4 mb-10">
-            <div className="w-14 h-14 bg-gradient-to-br from-slate-100 to-slate-200 rounded-2xl flex items-center justify-center">
-              <Target className="w-7 h-7 text-slate-700" />
-            </div>
-            <h3 className="text-2xl font-light text-slate-800">
-              Professional Experience
-            </h3>
-          </div>
-
-          <div className="space-y-8">
-            {experience.map((exp, index) => (
-              <div key={exp.company} className="relative">
-                {index !== experience.length - 1 && (
-                  <div className="absolute left-6 top-16 w-px h-20 bg-gradient-to-b from-slate-300 to-transparent" />
-                )}
-
-                <div className="flex gap-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-slate-600 to-slate-800 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Zap className="w-6 h-6 text-white" />
-                  </div>
-
                   <div className="flex-1">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                      <div>
-                        <h4 className="text-lg font-medium text-slate-800">
-                          {exp.role}
-                        </h4>
-                        <p className="text-slate-600 font-medium">
-                          {exp.company}
-                        </p>
-                      </div>
-                      <span className="text-sm text-slate-500 bg-slate-100/60 px-3 py-1 rounded-lg border border-slate-200/50 mt-2 md:mt-0 self-start">
-                        {exp.period}
-                      </span>
-                    </div>
-
-                    <ul className="space-y-2">
-                      {exp.achievements.map((achievement, achIndex) => (
-                        <li
-                          key={achIndex}
-                          className="text-slate-600 text-sm leading-relaxed flex items-start gap-3"
-                        >
-                          <div className="w-1.5 h-1.5 bg-slate-400 rounded-full mt-2 flex-shrink-0" />
-                          {achievement}
-                        </li>
+                    <h4 className="text-lg font-medium text-slate-800 mb-1">
+                      {edu.degree}
+                    </h4>
+                    <p className="text-slate-600 text-sm font-medium mb-2">
+                      {edu.institution}
+                    </p>
+                    <span className="inline-block text-xs text-slate-500 bg-slate-100/60 px-3 py-1 rounded-lg border border-slate-200/50 mb-4">
+                      {edu.year}
+                    </span>
+                    <ul className="list-disc pl-5 space-y-1 text-slate-600 text-sm">
+                      {edu.details.map((detail, i) => (
+                        <li key={i}>{detail}</li>
                       ))}
                     </ul>
                   </div>
@@ -523,25 +431,8 @@ export default function About() {
           </div>
         </div>
 
-        {/* Call to Action */}
-        <div
-          className="text-center mt-16 opacity-0 animate-fade-in-up"
-          style={{ animationDelay: "2.4s" }}
-        >
-          <p className="text-slate-600 mb-8 text-lg font-light">
-            Ready to bring your next project to life?
-          </p>
-          <button
-            onClick={() =>
-              document
-                .querySelector("#contact")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-            className="interactive px-8 py-4 bg-slate-800 text-white rounded-2xl font-medium hover:bg-slate-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl btn-animate"
-          >
-            Let's Work Together
-          </button>
-        </div>
+        {/* Add extra margin at the bottom for balance */}
+        <div className="h-8 md:h-16" />
       </div>
     </section>
   );
