@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { MapPin, Coffee, Book, Star } from "lucide-react";
-import gsap from "gsap";
 
 interface AnimatedDot {
   x: number;
@@ -254,49 +253,6 @@ export default function About() {
     return () => observer.disconnect();
   }, []);
 
-  // GSAP animations for About story paragraphs using React refs
-  const aboutPara1 = useRef<HTMLParagraphElement>(null);
-  const aboutPara2 = useRef<HTMLParagraphElement>(null);
-  const aboutPara3 = useRef<HTMLParagraphElement>(null);
-  const aboutPara4 = useRef<HTMLParagraphElement>(null);
-  useEffect(() => {
-    if (
-      aboutPara1.current &&
-      aboutPara2.current &&
-      aboutPara3.current &&
-      aboutPara4.current
-    ) {
-      gsap.from(aboutPara1.current, {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        delay: 0.2,
-        ease: "power2.out",
-      });
-      gsap.from(aboutPara2.current, {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        delay: 0.5,
-        ease: "power2.out",
-      });
-      gsap.from(aboutPara3.current, {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        delay: 0.8,
-        ease: "power2.out",
-      });
-      gsap.from(aboutPara4.current, {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        delay: 1.1,
-        ease: "power2.out",
-      });
-    }
-  }, []);
-
   return (
     <section
       id="about"
@@ -359,25 +315,25 @@ export default function About() {
               </div>
 
               <div className="space-y-6 text-slate-600 leading-relaxed">
-                <p ref={aboutPara1}>
+                <p>
                   My coding adventure began in 2023, when I wrote my first line
                   of code and realized—hey, this is actually kind of magical!
                   Since then, I've been hooked on the thrill of turning ideas
                   into reality, one bug (and coffee) at a time.
                 </p>
-                <p ref={aboutPara2}>
+                <p>
                   I love building things—sometimes they work, sometimes they
                   break, but I always learn something new. Whether it's a quirky
                   web app, a handy tool, or just a fun experiment, I enjoy the
                   process of making stuff that others can use and smile at.
                 </p>
-                <p ref={aboutPara3}>
+                <p>
                   My journey is all about curiosity, creativity, and a little
                   bit of chaos. I believe the best projects are born from a mix
                   of late-night inspiration, a dash of stubbornness, and the joy
                   of seeing something come alive on the screen.
                 </p>
-                <p ref={aboutPara4}>
+                <p>
                   If you ever want to talk code, brainstorm wild ideas, or just
                   share a meme, I'm always up for it. Let's keep building,
                   breaking, and learning—because that's where the real fun is!
@@ -386,7 +342,7 @@ export default function About() {
                 <div className="flex items-center gap-6 pt-6 border-t border-slate-200/50">
                   <div className="flex items-center gap-2 text-sm">
                     <MapPin className="w-4 h-4 text-slate-500" />
-                    <span>bengaluru, India</span>
+                    <span>Bengaluru, India</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <Coffee className="w-4 h-4 text-slate-500" />
