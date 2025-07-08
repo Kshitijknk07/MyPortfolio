@@ -319,10 +319,10 @@ export default function About() {
                   My coding adventure began in 2023, when I wrote my first line
                   of code and realized hey, this is actually kind of magical!
                   Since then, I've been hooked on the thrill of turning ideas
-                  into reality, one bug (and coffee) at a time.
+                  into reality, one bug (and Tea) at a time.
                 </p>
                 <p>
-                  I love building things—sometimes they work, sometimes they
+                  I love building things sometimes they work, sometimes they
                   break, but I always learn something new. Whether it's a quirky
                   web app, a handy tool, or just a fun experiment, I enjoy the
                   process of making stuff that others can use and smile at.
@@ -336,7 +336,7 @@ export default function About() {
                 <p>
                   If you ever want to talk code, brainstorm wild ideas, or just
                   share a meme, I'm always up for it. Let's keep building,
-                  breaking, and learning—because that's where the real fun is!
+                  breaking, and learning because that's where the real fun is!
                 </p>
 
                 <div className="flex items-center gap-6 pt-6 border-t border-slate-200/50">
