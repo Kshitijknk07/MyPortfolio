@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { ArrowDown, Star } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);

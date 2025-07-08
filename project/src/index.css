@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.6;
   font-weight: 300;
 
@@ -67,11 +67,11 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-  
+
   .animate-glow {
     animation: glow 3s ease-in-out infinite alternate;
   }
-  
+
   @keyframes glow {
     from {
       box-shadow: 0 0 20px rgba(100, 116, 139, 0.1);
@@ -80,7 +80,7 @@ body {
       box-shadow: 0 0 40px rgba(100, 116, 139, 0.2);
     }
   }
-  
+
   .glass-effect {
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(10px);
