@@ -29,7 +29,10 @@ export default function Projects() {
             <Star className="w-5 h-5 text-slate-600" />
             <div className="w-12 h-px bg-gradient-to-r from-transparent via-slate-400 to-transparent" />
           </div>
-          <h2 className="text-5xl md:text-6xl font-extrabold mb-6 text-slate-800 tracking-tight font-display">
+          <h2
+            className="text-5xl md:text-6xl font-light mb-6 text-slate-800 opacity-0 animate-fade-in-up"
+            style={{ animationDelay: "0.4s" }}
+          >
             Projects
           </h2>
           <p className="text-xl md:text-2xl text-slate-600 max-w-2xl mx-auto font-light leading-relaxed font-display">
@@ -54,7 +57,7 @@ export default function Projects() {
               className="w-32 h-32 object-cover rounded-2xl mb-6 shadow"
               style={{ filter: "grayscale(0.2) blur(0.5px)" }}
             />
-            <h3 className="text-2xl font-semibold text-slate-800 mb-2 text-center">
+            <h3 className="text-2xl font-extralight text-slate-800 mb-2 text-center">
               {projects[0].title}
             </h3>
             <p className="text-slate-600 text-base text-center mb-2">
