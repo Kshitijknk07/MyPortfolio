@@ -38,18 +38,26 @@ export default function AnimatedBackground() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    // Use devicePixelRatio for crispness and less pixel work
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      canvas.style.width = window.innerWidth + "px";
+      canvas.style.height = window.innerHeight + "px";
+      ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
+      ctx.scale(dpr, dpr);
     };
 
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
+    // Reduce particles/shapes on small screens
+    const getParticleCount = () => (window.innerWidth < 600 ? 10 : 25);
+    const getShapeCount = () => (window.innerWidth < 600 ? 3 : 8);
 
     // Initialize particles with subtle movement
     const initParticles = () => {
       particlesRef.current = [];
-      for (let i = 0; i < 25; i++) {
+      const count = getParticleCount();
+      for (let i = 0; i < count; i++) {
         particlesRef.current.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
@@ -72,8 +80,8 @@ export default function AnimatedBackground() {
         "square",
         "triangle",
       ];
-
-      for (let i = 0; i < 8; i++) {
+      const count = getShapeCount();
+      for (let i = 0; i < count; i++) {
         shapesRef.current.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
@@ -88,8 +96,23 @@ export default function AnimatedBackground() {
       }
     };
 
+    resizeCanvas();
+    window.addEventListener("resize", () => {
+      resizeCanvas();
+      initParticles();
+      initShapes();
+    });
+
     initParticles();
     initShapes();
+
+    let running = true;
+    // Pause animation when tab is not visible
+    const handleVisibility = () => {
+      running = document.visibilityState === "visible";
+      if (running) animate();
+    };
+    document.addEventListener("visibilitychange", handleVisibility);
 
     const drawShape = (shape: FloatingShape) => {
       ctx.save();
@@ -141,6 +164,7 @@ export default function AnimatedBackground() {
     };
 
     const animate = () => {
+      if (!running) return;
       timeRef.current += 0.01;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -214,6 +238,7 @@ export default function AnimatedBackground() {
 
     return () => {
       window.removeEventListener("resize", resizeCanvas);
+      document.removeEventListener("visibilitychange", handleVisibility);
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }

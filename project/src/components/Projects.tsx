@@ -96,11 +96,15 @@ export default function Projects() {
   }, [activeCategory]);
 
   useEffect(() => {
+    // Batch IntersectionObserver setup for performance
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fade-in-up");
+            // Stagger animation more aggressively
+            setTimeout(() => {
+              entry.target.classList.add("animate-fade-in-up");
+            }, Number((entry.target as HTMLElement).getAttribute("data-anim-delay")) || 0);
           }
         });
       },
@@ -108,7 +112,10 @@ export default function Projects() {
     );
 
     const projectCards = document.querySelectorAll(".project-card");
-    projectCards.forEach((card) => observer.observe(card));
+    projectCards.forEach((card, idx) => {
+      (card as HTMLElement).setAttribute("data-anim-delay", String(idx * 200));
+      observer.observe(card);
+    });
 
     return () => observer.disconnect();
   }, [filteredProjects]);
@@ -182,6 +189,7 @@ export default function Projects() {
                   }`}
                   onLoad={() => handleImageLoad(project.id)}
                   loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent" />
                 <div className="absolute top-4 right-4 text-slate-100 font-light text-sm bg-black/20 backdrop-blur-sm px-3 py-1 rounded-full">

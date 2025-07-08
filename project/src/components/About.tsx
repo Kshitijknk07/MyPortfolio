@@ -101,11 +101,16 @@ export default function About() {
     const initializeDots = () => {
       const dots: AnimatedDot[] = [];
       const spacing = 40;
-      const cols = Math.ceil(window.innerWidth / spacing);
-      const rows = Math.ceil(window.innerHeight / spacing);
-
+      // Reduce dots on small screens
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const cols = Math.ceil(width / spacing);
+      const rows = Math.ceil(height / spacing);
+      const maxDots = width < 600 ? 40 : cols * rows;
+      let count = 0;
       for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
+          if (count++ >= maxDots) break;
           dots.push({
             x: i * spacing,
             y: j * spacing,
@@ -122,8 +127,9 @@ export default function About() {
     const initializeParticles = () => {
       const particles: FloatingParticle[] = [];
       const colors = ["#64748b", "#94a3b8", "#cbd5e1"];
-
-      for (let i = 0; i < 15; i++) {
+      // Reduce particles on small screens
+      const count = window.innerWidth < 600 ? 5 : 15;
+      for (let i = 0; i < count; i++) {
         particles.push({
           x: Math.random() * window.innerWidth,
           y: Math.random() * window.innerHeight,
@@ -143,8 +149,12 @@ export default function About() {
     const handleResize = () => {
       initializeDots();
       if (canvasRef.current) {
-        canvasRef.current.width = window.innerWidth;
-        canvasRef.current.height = window.innerHeight;
+        // Use devicePixelRatio for crispness and less pixel work
+        const dpr = window.devicePixelRatio || 1;
+        canvasRef.current.width = window.innerWidth * dpr;
+        canvasRef.current.height = window.innerHeight * dpr;
+        canvasRef.current.style.width = window.innerWidth + "px";
+        canvasRef.current.style.height = window.innerHeight + "px";
       }
     };
 
@@ -160,10 +170,25 @@ export default function About() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    // Use devicePixelRatio for crispness and less pixel work
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    canvas.style.width = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.scale(dpr, dpr);
+
+    let running = true;
+    // Pause animation when tab is not visible
+    const handleVisibility = () => {
+      running = document.visibilityState === "visible";
+      if (running) animate();
+    };
+    document.addEventListener("visibilitychange", handleVisibility);
 
     const animate = () => {
+      if (!running) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Draw animated dots
@@ -245,6 +270,7 @@ export default function About() {
     animate();
 
     return () => {
+      document.removeEventListener("visibilitychange", handleVisibility);
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
@@ -317,9 +343,9 @@ export default function About() {
             className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light opacity-0 animate-fade-in-up"
             style={{ animationDelay: "0.6s" }}
           >
-            I’m a Computer Science student passionate about building creative
+            I'm a Computer Science student passionate about building creative
             digital solutions. I enjoy working with modern web and backend
-            technologies, and I’m always eager to learn, grow, and collaborate
+            technologies, and I'm always eager to learn, grow, and collaborate
             with others.
           </p>
         </div>
