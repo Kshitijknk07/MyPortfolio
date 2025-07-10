@@ -1,8 +1,10 @@
 import { useEffect, useRef } from "react";
 import { ArrowDown } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -29,11 +31,6 @@ export default function Hero() {
   const scrollToProjects = () => {
     const projectsSection = document.querySelector("#projects");
     projectsSection?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const scrollToContact = () => {
-    const contactSection = document.querySelector("#contact");
-    contactSection?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -87,7 +84,7 @@ export default function Hero() {
             View Projects
           </button>
           <button
-            onClick={scrollToContact}
+            onClick={() => navigate("/resume")}
             className="interactive px-8 py-4 border border-slate-300 text-slate-700 rounded-full font-medium hover:bg-slate-50 transition-all duration-300 btn-animate"
           >
             My Resume
