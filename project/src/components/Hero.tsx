@@ -1,120 +1,150 @@
-import { useEffect, useRef } from "react";
-import { ArrowDown } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { TextPlugin } from 'gsap/TextPlugin';
 
-export default function Hero() {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
+gsap.registerPlugin(TextPlugin);
+
+const Hero: React.FC = () => {
+  const heroRef = useRef<HTMLElement>(null);
+  const nameRef = useRef<HTMLHeadingElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const shapeRef = useRef<HTMLDivElement>(null);
+  const circleRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("animate-fade-in");
-        }
-      },
-      { threshold: 0.1 }
-    );
+    const hero = heroRef.current;
+    const name = nameRef.current;
+    const title = titleRef.current;
+    const subtitle = subtitleRef.current;
+    const shape = shapeRef.current;
+    const circle = circleRef.current;
 
-    if (heroRef.current) {
-      observer.observe(heroRef.current);
-    }
+    if (!hero || !name || !title || !subtitle || !shape || !circle) return;
 
-    return () => observer.disconnect();
+    // Set initial states
+    gsap.set([name, title, subtitle], { y: 100, opacity: 0 });
+    gsap.set(shape, { x: -200, rotation: 0, opacity: 0 });
+    gsap.set(circle, { scale: 0, opacity: 0 });
+
+    // Main timeline
+    const tl = gsap.timeline({ delay: 1 });
+
+    // Animate geometric shapes
+    tl.to(shape, {
+      duration: 1.5,
+      x: 0,
+      rotation: 360,
+      opacity: 1,
+      ease: "power3.out"
+    })
+    .to(circle, {
+      duration: 1,
+      scale: 1,
+      opacity: 0.1,
+      ease: "elastic.out(1, 0.3)"
+    }, "-=1")
+    
+    // Animate text elements
+    .to(name, {
+      duration: 1.2,
+      y: 0,
+      opacity: 1,
+      ease: "power3.out"
+    }, "-=0.8")
+    .to(title, {
+      duration: 1,
+      y: 0,
+      opacity: 1,
+      ease: "power3.out"
+    }, "-=0.6")
+    .to(subtitle, {
+      duration: 0.8,
+      y: 0,
+      opacity: 1,
+      ease: "power3.out"
+    }, "-=0.4");
+
+    // Continuous animations
+    gsap.to(shape, {
+      duration: 20,
+      rotation: "+=360",
+      repeat: -1,
+      ease: "none"
+    });
+
+    gsap.to(circle, {
+      duration: 6,
+      rotation: "+=360",
+      repeat: -1,
+      ease: "none"
+    });
+
+    // Parallax effect on scroll
+    gsap.to(hero, {
+      yPercent: -50,
+      ease: "none",
+      scrollTrigger: {
+        trigger: hero,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+
   }, []);
 
-  const scrollToNext = () => {
-    const aboutSection = document.querySelector("#about");
-    aboutSection?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const scrollToProjects = () => {
-    const projectsSection = document.querySelector("#projects");
-    projectsSection?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <section
+    <section 
+      id="hero"
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pb-20"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white"
     >
-      {/* Main content */}
-      <div className="relative z-10 text-center px-4 max-w-5xl">
-        <div
-          className="mb-12 opacity-0 animate-fade-in-up"
-          style={{ animationDelay: "0.2s" }}
-        >
-          <div className="inline-block mb-8">
-            <div className="w-28 h-28 mx-auto mb-8 rounded-full bg-gradient-to-br from-slate-100 to-slate-200 shadow-2xl shadow-slate-200/50 flex items-center justify-center animate-float">
-              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-slate-600 to-slate-800 flex items-center justify-center">
-                <span className="text-white font-bold text-2xl">KNK</span>
-              </div>
-            </div>
-          </div>
+      {/* Geometric Shapes */}
+      <div 
+        ref={shapeRef}
+        className="absolute top-20 right-20 w-20 h-20 border-2 border-black"
+      />
+      
+      <div 
+        ref={circleRef}
+        className="absolute bottom-20 left-20 w-40 h-40 rounded-full border border-black"
+      />
 
-          <h1 className="text-7xl md:text-9xl font-light mb-6 text-slate-800 tracking-tight">
-            Kshitij Narayan Kulkarni
-          </h1>
-          <div className="h-px w-32 bg-gradient-to-r from-transparent via-slate-400 to-transparent mx-auto" />
-        </div>
-
-        <p
-          className="text-2xl md:text-3xl text-slate-600 mb-6 font-light opacity-0 animate-fade-in-up"
-          style={{ animationDelay: "0.5s" }}
+      {/* Content */}
+      <div className="text-center z-10 max-w-4xl mx-auto px-6">
+        <h1 
+          ref={nameRef}
+          className="text-6xl md:text-8xl font-bold tracking-tight mb-4"
         >
-          Software Developer
+          KSHITIJ NK
+        </h1>
+        
+        <h2 
+          ref={titleRef}
+          className="text-2xl md:text-4xl font-light tracking-wide mb-6 text-gray-600"
+        >
+          CREATIVE DEVELOPER
+        </h2>
+        
+        <p 
+          ref={subtitleRef}
+          className="text-lg md:text-xl font-light tracking-wide max-w-2xl mx-auto leading-relaxed"
+        >
+          Crafting digital experiences through code, design, and innovation.
+          <br />
+          Pushing boundaries with modern web technologies.
         </p>
-
-        <p
-          className="text-lg text-slate-500 max-w-2xl mx-auto mb-16 leading-relaxed opacity-0 animate-fade-in-up"
-          style={{ animationDelay: "0.8s" }}
-        >
-          Code with purpose. Design with precision. Crafting seamless software
-          experiences from the ground up.
-        </p>
-
-        <div
-          className="flex flex-col sm:flex-row gap-6 justify-center opacity-0 animate-fade-in-up"
-          style={{ animationDelay: "1.1s" }}
-        >
-          <button
-            onClick={scrollToProjects}
-            className="interactive px-8 py-4 bg-slate-800 text-white rounded-full font-medium hover:bg-slate-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl btn-animate"
-          >
-            View Projects
-          </button>
-          <button
-            onClick={() => navigate("/resume")}
-            className="interactive px-8 py-4 border border-slate-300 text-slate-700 rounded-full font-medium hover:bg-slate-50 transition-all duration-300 btn-animate"
-          >
-            My Resume
-          </button>
-        </div>
       </div>
 
-      {/* Floating geometric elements */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-slate-400 rounded-full animate-pulse opacity-60" />
-        <div className="absolute top-1/3 right-1/3 w-2 h-2 bg-slate-300 rounded-full animate-ping opacity-40" />
-        <div
-          className="absolute bottom-1/4 left-1/3 w-1 h-1 bg-slate-500 rounded-full animate-pulse opacity-50"
-          style={{ animationDelay: "1s" }}
-        />
-        <div className="absolute top-1/2 right-1/4 w-px h-8 bg-gradient-to-b from-transparent via-slate-300 to-transparent opacity-30 animate-float" />
-        <div
-          className="absolute bottom-1/3 right-1/2 w-8 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent opacity-30 animate-float"
-          style={{ animationDelay: "2s" }}
-        />
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 border-2 border-black rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-black rounded-full mt-2 animate-pulse" />
+        </div>
       </div>
-
-      {/* Scroll indicator */}
-      <button
-        onClick={scrollToNext}
-        className="interactive absolute bottom-12 left-1/2 transform -translate-x-1/2 text-slate-400 hover:text-slate-600 transition-colors duration-300 animate-pulse"
-        aria-label="Scroll to next section"
-      >
-        <ArrowDown className="w-5 h-5" />
-      </button>
     </section>
   );
-}
+};
+
+export default Hero;

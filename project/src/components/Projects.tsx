@@ -1,84 +1,215 @@
-import { useRef, useState } from "react";
-import { Filter, Star } from "lucide-react";
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-const projects = [
-  {
-    id: 1,
-    title: "Personal Projects Coming Soon!",
-    subtitle: "",
-    description: "My personal projects will be added here soon. Stay tuned!",
-    image:
-      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
-    tech: [],
-    year: "",
-    category: "personal",
-  },
-];
+gsap.registerPlugin(ScrollTrigger);
 
-export default function Projects() {
+const Projects: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
-  const [filteredProjects] = useState(projects);
-  const [] = useState<Set<number>>(new Set());
+
+  const projects = [
+    {
+      id: 1,
+      title: "E-Commerce Platform",
+      description: "Modern e-commerce solution with advanced features",
+      tech: ["React", "Node.js", "PostgreSQL", "Stripe"],
+      type: "Web Application"
+    },
+    {
+      id: 2,
+      title: "Task Management App",
+      description: "Intuitive productivity tool for teams",
+      tech: ["Vue.js", "Express", "MongoDB", "Socket.io"],
+      type: "SaaS Platform"
+    },
+    {
+      id: 3,
+      title: "Real-Time Chat App",
+      description: "Instant messaging with modern features",
+      tech: ["React Native", "Firebase", "WebRTC"],
+      type: "Mobile App"
+    },
+    {
+      id: 4,
+      title: "Analytics Dashboard",
+      description: "Data visualization and business intelligence",
+      tech: ["Next.js", "D3.js", "Python", "AWS"],
+      type: "Dashboard"
+    },
+    {
+      id: 5,
+      title: "Portfolio Website",
+      description: "Creative portfolio with stunning animations",
+      tech: ["React", "GSAP", "Tailwind", "Framer"],
+      type: "Creative"
+    },
+    {
+      id: 6,
+      title: "API Gateway",
+      description: "Microservices architecture solution",
+      tech: ["Docker", "Kong", "Redis", "Kubernetes"],
+      type: "Infrastructure"
+    }
+  ];
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const title = titleRef.current;
+    const projectsContainer = projectsRef.current;
+
+    if (!section || !title || !projectsContainer) return;
+
+    // Title animation
+    gsap.fromTo(title, 
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: title,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+    // Projects animation
+    gsap.fromTo(projectsContainer.children,
+      { 
+        y: 60, 
+        opacity: 0,
+        rotationX: 15
+      },
+      {
+        y: 0,
+        opacity: 1,
+        rotationX: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: projectsContainer,
+          start: "top 75%",
+          end: "bottom 25%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+    // Hover animations for project cards
+    const projectCards = projectsContainer.children;
+    Array.from(projectCards).forEach((card) => {
+      const element = card as HTMLElement;
+      
+      element.addEventListener('mouseenter', () => {
+        gsap.to(element, {
+          y: -10,
+          scale: 1.02,
+          duration: 0.4,
+          ease: "power2.out"
+        });
+      });
+
+      element.addEventListener('mouseleave', () => {
+        gsap.to(element, {
+          y: 0,
+          scale: 1,
+          duration: 0.4,
+          ease: "power2.out"
+        });
+      });
+    });
+
+    // Parallax effect
+    gsap.to(section, {
+      yPercent: -15,
+      ease: "none",
+      scrollTrigger: {
+        trigger: section,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+
+  }, []);
 
   return (
-    <section ref={projectsRef} className="py-20 px-4 relative">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-3 mb-6">
-            <div className="w-12 h-px bg-gradient-to-r from-transparent via-slate-400 to-transparent" />
-            <Star className="w-5 h-5 text-slate-600" />
-            <div className="w-12 h-px bg-gradient-to-r from-transparent via-slate-400 to-transparent" />
-          </div>
-          <h2
-            className="text-5xl md:text-6xl font-light mb-6 text-slate-800 opacity-0 animate-fade-in-up"
-            style={{ animationDelay: "0.4s" }}
-          >
-            Projects
-          </h2>
-          <p className="text-xl md:text-2xl text-slate-600 max-w-2xl mx-auto font-light leading-relaxed font-display">
-            A curated selection of work that showcases the intersection of
-            design, technology, and creative problem-solving.
-          </p>
+    <section 
+      id="projects"
+      ref={sectionRef}
+      className="min-h-screen flex items-center py-20 bg-white"
+    >
+      <div className="max-w-6xl mx-auto px-6">
+        <h2 
+          ref={titleRef}
+          className="text-5xl md:text-6xl font-bold mb-16 text-center tracking-tight"
+        >
+          FEATURED PROJECTS
+        </h2>
+        
+        <div ref={projectsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              className="group bg-white border border-black/10 rounded-lg overflow-hidden hover:border-black/30 transition-all duration-300 cursor-pointer"
+            >
+              {/* Project Image Placeholder */}
+              <div className="h-48 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                <div className="text-6xl font-bold text-gray-300">
+                  {String(project.id).padStart(2, '0')}
+                </div>
+              </div>
+              
+              {/* Project Content */}
+              <div className="p-6">
+                <div className="mb-3">
+                  <span className="text-xs uppercase tracking-wide text-gray-500 font-medium">
+                    {project.type}
+                  </span>
+                </div>
+                
+                <h3 className="text-xl font-bold mb-3 group-hover:text-gray-600 transition-colors duration-300">
+                  {project.title}
+                </h3>
+                
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  {project.description}
+                </p>
+                
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((tech, index) => (
+                    <span
+                      key={index}
+                      className="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded-full font-medium"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Hover Overlay */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-300" />
+            </div>
+          ))}
         </div>
 
-        {/* Single Category Label */}
-        <div className="flex justify-center mb-12">
-          <div className="bg-white/60 backdrop-blur-sm rounded-2xl px-8 py-3 border border-slate-200/50 shadow text-lg font-semibold text-slate-700">
-            Personal Projects
-          </div>
+        {/* View More Button */}
+        <div className="text-center mt-16">
+          <button className="px-8 py-4 border-2 border-black text-black font-medium tracking-wide uppercase hover:bg-black hover:text-white transition-all duration-300">
+            View All Projects
+          </button>
         </div>
-
-        {/* Projects Grid */}
-        <div className="flex justify-center">
-          <div className="project-card bg-white/60 backdrop-blur-sm rounded-3xl p-10 border border-slate-200/50 flex flex-col items-center justify-center shadow-lg max-w-lg w-full">
-            <img
-              src={projects[0].image}
-              alt="Projects coming soon"
-              className="w-32 h-32 object-cover rounded-2xl mb-6 shadow"
-              style={{ filter: "grayscale(0.2) blur(0.5px)" }}
-            />
-            <h3 className="text-2xl font-extralight text-slate-800 mb-2 text-center">
-              {projects[0].title}
-            </h3>
-            <p className="text-slate-600 text-base text-center mb-2">
-              {projects[0].description}
-            </p>
-            <span className="inline-block text-xs text-slate-500 bg-slate-100/80 px-3 py-1 rounded-lg border border-slate-200/50 mt-2">
-              Yet to be added
-            </span>
-          </div>
-        </div>
-
-        {/* Empty State */}
-        {filteredProjects.length === 0 && (
-          <div className="text-center py-16">
-            <Filter className="w-12 h-12 text-slate-400 mx-auto mb-4" />
-            <p className="text-slate-500 text-lg">
-              No projects found in this category.
-            </p>
-          </div>
-        )}
       </div>
     </section>
   );
-}
+};
+
+export default Projects;

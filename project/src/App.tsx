@@ -1,55 +1,46 @@
-import { useEffect } from "react";
-import AnimatedBackground from "./components/AnimatedBackground";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Projects from "./components/Projects";
-import Skills from "./components/Skills";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-import Resume from "./components/Resume";
-import { Routes, Route } from "react-router-dom";
-import "./App.css";
+import { useEffect } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { TextPlugin } from 'gsap/TextPlugin';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import Hero from './components/Hero';
+import About from './components/About';
+import TechnicalSkills from './components/TechnicalSkills';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
+import Navigation from './components/Navigation';
+import './App.css';
+
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger, TextPlugin, ScrollToPlugin);
 
 function App() {
   useEffect(() => {
-    document.documentElement.style.scrollBehavior = "smooth";
-
-    const animatedElements = document.querySelectorAll(".interactive");
-    animatedElements.forEach((el) => {
-      (el as HTMLElement).style.willChange = "transform";
-    });
-
-    return () => {
-      animatedElements.forEach((el) => {
-        (el as HTMLElement).style.willChange = "auto";
-      });
-    };
+    // Initialize smooth scrolling
+    gsap.to(window, { duration: 1, scrollTo: 0 });
+    
+    // Set up global animations
+    gsap.set('body', { overflow: 'hidden' });
+    
+    // Page load animation
+    const tl = gsap.timeline();
+    tl.to('body', { duration: 0.5, overflow: 'auto', delay: 1 });
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 overflow-x-hidden">
-      <AnimatedBackground />
-      <main className="relative z-10">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Hero />
-                <About />
-                <div id="projects">
-                  <Projects />
-                </div>
-                <Skills />
-                <Contact />
-                <Footer />
-              </>
-            }
-          />
-          <Route path="/resume" element={<Resume />} />
-        </Routes>
-      </main>
-    </div>
+    <Router>
+      <div className="min-h-screen bg-white text-black overflow-x-hidden">
+        <Navigation />
+        <main className="relative">
+          <Hero />
+          <About />
+          <TechnicalSkills />
+          <Projects />
+          <Contact />
+        </main>
+      </div>
+    </Router>
   );
 }
 
