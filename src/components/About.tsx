@@ -57,7 +57,7 @@ const About = () => {
             className="relative"
           >
             <div className="relative w-full max-w-md mx-auto">
-              {/* Profile Image Placeholder */}
+              {/* Profile Section */}
               <div className="aspect-square bg-gradient-to-br from-pink-100 to-pink-50 rounded-2xl border border-black/10 flex items-center justify-center relative overflow-hidden">
                 <div className="text-8xl font-bold text-pink-400/60">KNK</div>
 
