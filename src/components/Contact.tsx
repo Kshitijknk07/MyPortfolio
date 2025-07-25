@@ -62,7 +62,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="min-h-screen flex items-center justify-center py-20 relative"
+      className="min-h-screen flex items-center justify-center pt-32 pb-20 relative"
       style={{ backgroundColor: "#FFFFFF" }}
     >
       {/* Background Elements */}
