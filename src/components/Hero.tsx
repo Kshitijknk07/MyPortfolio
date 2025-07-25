@@ -80,7 +80,7 @@ const Hero = () => {
           className="mb-6"
         >
           <span className="inline-block px-4 py-2 bg-black/5 border border-black/20 rounded-full text-black text-sm font-medium">
-            👋 Hello, I'm a Software Engineer
+            💻 Hello, I'm KSHITIJ
           </span>
         </motion.div>
 
