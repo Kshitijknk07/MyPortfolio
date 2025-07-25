@@ -259,26 +259,44 @@ const TechnicalSkills = () => {
                         className="px-4 py-2 text-sm font-medium rounded-full border transition-all duration-300 cursor-default"
                         style={{
                           backgroundColor: "transparent",
-                          borderColor: "#ec4899",
-                          color: "#ec4899",
+                          borderColor:
+                            category.color.includes("black") ||
+                            category.color.includes("gray")
+                              ? "#ec4899"
+                              : "#000000",
+                          color:
+                            category.color.includes("black") ||
+                            category.color.includes("gray")
+                              ? "#ec4899"
+                              : "#000000",
                         }}
                         onMouseEnter={(e) => {
+                          const isPinkButtons =
+                            category.color.includes("black") ||
+                            category.color.includes("gray");
                           (e.target as HTMLElement).style.backgroundColor =
-                            "#ec4899";
+                            isPinkButtons ? "#ec4899" : "#000000";
                           (e.target as HTMLElement).style.color = "#ffffff";
                           (e.target as HTMLElement).style.borderColor =
-                            "#ec4899";
+                            isPinkButtons ? "#ec4899" : "#000000";
                           (e.target as HTMLElement).style.transform =
                             "translateY(-1px)";
                           (e.target as HTMLElement).style.boxShadow =
-                            "0 4px 12px rgba(236, 72, 153, 0.5)";
+                            isPinkButtons
+                              ? "0 4px 12px rgba(236, 72, 153, 0.5)"
+                              : "0 4px 12px rgba(0, 0, 0, 0.3)";
                         }}
                         onMouseLeave={(e) => {
+                          const isPinkButtons =
+                            category.color.includes("black") ||
+                            category.color.includes("gray");
                           (e.target as HTMLElement).style.backgroundColor =
                             "transparent";
-                          (e.target as HTMLElement).style.color = "#ec4899";
+                          (e.target as HTMLElement).style.color = isPinkButtons
+                            ? "#ec4899"
+                            : "#000000";
                           (e.target as HTMLElement).style.borderColor =
-                            "#ec4899";
+                            isPinkButtons ? "#ec4899" : "#000000";
                           (e.target as HTMLElement).style.transform =
                             "translateY(0px)";
                           (e.target as HTMLElement).style.boxShadow = "none";
@@ -301,8 +319,16 @@ const TechnicalSkills = () => {
                     className="px-3 py-1 rounded-full text-xs font-bold border"
                     style={{
                       backgroundColor: "transparent",
-                      color: "#ec4899",
-                      borderColor: "#ec4899",
+                      color:
+                        category.color.includes("black") ||
+                        category.color.includes("gray")
+                          ? "#ec4899"
+                          : "#000000",
+                      borderColor:
+                        category.color.includes("black") ||
+                        category.color.includes("gray")
+                          ? "#ec4899"
+                          : "#000000",
                     }}
                   >
                     {category.skills.length} skills
