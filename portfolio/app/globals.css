@@ -120,3 +120,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom font classes */
+.font-classy-marisa {
+  font-family: var(--font-classy-marisa);
+}

@@ -1,11 +1,8 @@
-"use client";
-
 import { ArrowRight, Download, Mail } from "lucide-react";
-import FlipLink from "@/components/ui/text-effect-flipper";
 
 export function HeroSection() {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800 pt-0">
+    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800 pt-16">
       <div className="container mx-auto px-8">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           {/* Main Heading */}
@@ -31,7 +28,10 @@ export function HeroSection() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-            <button className="group flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-full font-medium hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl">
+            <button
+              className="group flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-full font-medium hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+              aria-label="View my portfolio work"
+            >
               View My Work
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </button>
@@ -40,12 +40,16 @@ export function HeroSection() {
               <a
                 href="mailto:kshitij@example.com"
                 className="flex items-center gap-2 px-6 py-3 text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-300"
+                aria-label="Send me an email"
               >
                 <Mail className="w-5 h-5" />
                 Get In Touch
               </a>
 
-              <button className="flex items-center gap-2 px-6 py-3 text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-300">
+              <button
+                className="flex items-center gap-2 px-6 py-3 text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-300"
+                aria-label="Download my CV"
+              >
                 <Download className="w-5 h-5" />
                 Download CV
               </button>
@@ -62,7 +66,10 @@ export function HeroSection() {
                 Years Experience
               </div>
             </div>
-            <div className="w-px h-12 bg-slate-200 dark:bg-slate-700"></div>
+            <div
+              className="w-px h-12 bg-slate-200 dark:bg-slate-700"
+              aria-hidden="true"
+            ></div>
             <div className="text-center">
               <div className="text-3xl font-bold text-slate-900 dark:text-white">
                 50+
@@ -71,7 +78,10 @@ export function HeroSection() {
                 Projects Completed
               </div>
             </div>
-            <div className="w-px h-12 bg-slate-200 dark:bg-slate-700"></div>
+            <div
+              className="w-px h-12 bg-slate-200 dark:bg-slate-700"
+              aria-hidden="true"
+            ></div>
             <div className="text-center">
               <div className="text-3xl font-bold text-slate-900 dark:text-white">
                 100%
