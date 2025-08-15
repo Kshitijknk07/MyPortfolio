@@ -38,6 +38,13 @@ const navItems = [
 ];
 
 export function Navbar() {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <nav className="fixed top-4 left-0 right-0 z-50 bg-transparent">
       <div className="container mx-auto px-8 h-16 flex items-center justify-center">
@@ -51,18 +58,18 @@ export function Navbar() {
 
           {/* Navigation Items */}
           {navItems.map((navItem: any, idx: number) => (
-            <a
+            <button
               key={`link=${idx}`}
-              href={navItem.link}
+              onClick={() => scrollToSection(navItem.link.replace("#", ""))}
               className={cn(
-                "relative items-center flex space-x-1 text-gray-700 hover:text-blue-600 transition-colors duration-300 font-dancing-script"
+                "relative items-center flex space-x-1 text-gray-700 hover:text-blue-600 transition-colors duration-300 font-dancing-script cursor-pointer"
               )}
             >
               <span className="block sm:hidden">{navItem.icon}</span>
               <span className="hidden sm:block text-sm font-medium">
                 {navItem.name}
               </span>
-            </a>
+            </button>
           ))}
         </div>
       </div>
