@@ -1,9 +1,26 @@
 import { ArrowRight, Download, Mail } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function HeroSection() {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center bg-white pt-16">
-      <div className="container mx-auto px-8">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center bg-white pt-16 overflow-hidden"
+    >
+      {/* Grid Background */}
+      <div
+        className={cn(
+          "absolute inset-0",
+          "[background-size:40px_40px]",
+          "[background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]"
+        )}
+      />
+
+      {/* Radial gradient overlay for faded look */}
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+
+      {/* Content */}
+      <div className="relative z-20 container mx-auto px-8">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           {/* Main Heading */}
           <div className="space-y-6">
@@ -59,36 +76,18 @@ export function HeroSection() {
           {/* Stats */}
           <div className="flex justify-center items-center gap-12 pt-16">
             <div className="text-center">
-              <div className="text-3xl font-bold text-black">
-                3+
-              </div>
-              <div className="text-sm text-gray-600">
-                Years Experience
-              </div>
+              <div className="text-3xl font-bold text-black">3+</div>
+              <div className="text-sm text-gray-600">Years Experience</div>
             </div>
-            <div
-              className="w-px h-12 bg-gray-300"
-              aria-hidden="true"
-            ></div>
+            <div className="w-px h-12 bg-gray-300" aria-hidden="true"></div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-black">
-                50+
-              </div>
-              <div className="text-sm text-gray-600">
-                Projects Completed
-              </div>
+              <div className="text-3xl font-bold text-black">50+</div>
+              <div className="text-sm text-gray-600">Projects Completed</div>
             </div>
-            <div
-              className="w-px h-12 bg-gray-300"
-              aria-hidden="true"
-            ></div>
+            <div className="w-px h-12 bg-gray-300" aria-hidden="true"></div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-black">
-                100%
-              </div>
-              <div className="text-sm text-gray-600">
-                Client Satisfaction
-              </div>
+              <div className="text-3xl font-bold text-black">100%</div>
+              <div className="text-sm text-gray-600">Client Satisfaction</div>
             </div>
           </div>
         </div>
