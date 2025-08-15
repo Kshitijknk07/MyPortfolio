@@ -47,14 +47,18 @@ export function AboutSection() {
                 <p>
                   I've spent the past 3+ years working across different areas of
                   web development: front-end development, back-end systems,
-                  database design, and API development.
+                  database design, and API development. My journey has been driven by a passion for creating seamless digital experiences that solve real-world problems.
                 </p>
 
                 <p>
                   These days my time is spent researching, designing,
                   prototyping, and coding modern web applications. I also help
                   developers get started with their careers through open-source
-                  contributions.
+                  contributions and mentoring programs. Every project is an opportunity to push boundaries and explore new technologies.
+                </p>
+
+                <p>
+                  When I'm not coding, you'll find me contributing to open-source projects, writing technical articles, or exploring the latest trends in web development. I believe in continuous learning and sharing knowledge with the developer community.
                 </p>
               </div>
 

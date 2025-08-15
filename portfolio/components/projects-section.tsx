@@ -9,11 +9,14 @@ export function ProjectsSection() {
       <div className="container mx-auto px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-dancing-script bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 bg-clip-text text-transparent mb-4">
-            My Projects
+          <h2 className="text-4xl md:text-5xl font-light text-black leading-tight mb-4">
+            My{" "}
+            <span className="font-dancing-script text-5xl md:text-6xl bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 bg-clip-text text-transparent">
+              Projects
+            </span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Explore my latest work and creative solutions
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            From full-stack applications to innovative AI solutions, each project represents a unique challenge and learning experience. I focus on creating user-centric experiences that combine cutting-edge technology with elegant design principles.
           </p>
         </div>
 
