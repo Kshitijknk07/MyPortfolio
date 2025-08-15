@@ -4,6 +4,7 @@ import { Dancing_Script } from "next/font/google";
 // import localFont from "next/font/local";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
+import { LenisProvider } from "@/components/lenis-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,8 +54,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${dancingScript.variable} antialiased`}
         suppressHydrationWarning={true}
       >
-        <Navbar />
-        <main>{children}</main>
+        <LenisProvider>
+          <Navbar />
+          <main>{children}</main>
+        </LenisProvider>
       </body>
     </html>
   );

@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { Home, User, Briefcase, Code, Award, Mail } from "lucide-react";
+import Lenis from "lenis";
 
 const navItems = [
   {
@@ -38,10 +39,17 @@ const navItems = [
 ];
 
 export function Navbar() {
+  const lenisRef = useRef<Lenis | null>(null);
+
+  useEffect(() => {
+    // Get the Lenis instance from the provider
+    lenisRef.current = (window as any).lenis;
+  }, []);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    if (element && lenisRef.current) {
+      lenisRef.current.scrollTo(element, { offset: -80 });
     }
   };
 
