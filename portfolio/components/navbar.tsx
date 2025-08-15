@@ -48,7 +48,7 @@ export function Navbar() {
   return (
     <nav className="fixed top-4 left-0 right-0 z-50 bg-transparent">
       <div className="container mx-auto px-8 h-16 flex items-center justify-center">
-        <div className="flex max-w-fit border border-gray-200 rounded-full bg-white/90 backdrop-blur-md shadow-lg pr-4 pl-6 py-3 items-center justify-center space-x-6">
+        <div className="flex max-w-fit border border-gray-200/30 rounded-full bg-white/30 backdrop-blur-sm shadow-sm pr-4 pl-6 py-3 items-center justify-center space-x-6">
           {/* Logo/Name */}
           <div className="flex items-center mr-4">
             <h1 className="text-xl font-dancing-script bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 bg-clip-text text-transparent drop-shadow-sm">
