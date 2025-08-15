@@ -73,21 +73,33 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Stats */}
-          <div className="flex justify-center items-center gap-12 pt-16">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-black">3+</div>
-              <div className="text-sm text-gray-600">Years Experience</div>
+          {/* Quotes */}
+          <div className="flex justify-center items-start gap-12 pt-16">
+            <div className="max-w-xs text-center">
+              <p className="text-lg md:text-xl italic text-gray-700">
+                "Code is design made executable."
+              </p>
+              <span className="mt-2 inline-block text-sm text-gray-500">
+                Craft with clarity
+              </span>
             </div>
-            <div className="w-px h-12 bg-gray-300" aria-hidden="true"></div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-black">50+</div>
-              <div className="text-sm text-gray-600">Projects Completed</div>
+            <div className="w-px h-16 bg-gray-300" aria-hidden="true"></div>
+            <div className="max-w-xs text-center">
+              <p className="text-lg md:text-xl italic text-gray-700">
+                "Simplicity is the ultimate sophistication."
+              </p>
+              <span className="mt-2 inline-block text-sm text-gray-500">
+                Design with intent
+              </span>
             </div>
-            <div className="w-px h-12 bg-gray-300" aria-hidden="true"></div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-black">100%</div>
-              <div className="text-sm text-gray-600">Client Satisfaction</div>
+            <div className="w-px h-16 bg-gray-300" aria-hidden="true"></div>
+            <div className="max-w-xs text-center">
+              <p className="text-lg md:text-xl italic text-gray-700">
+                "Details create the experience."
+              </p>
+              <span className="mt-2 inline-block text-sm text-gray-500">
+                Ship with care
+              </span>
             </div>
           </div>
         </div>
