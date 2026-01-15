@@ -1,8 +1,8 @@
-"use client";
-import { useMotionValue } from "motion/react";
-import React, { useState, useEffect } from "react";
-import { useMotionTemplate, motion } from "motion/react";
-import { cn } from "@/lib/utils";
+'use client';
+import { useMotionValue } from 'motion/react';
+import React, { useState, useEffect } from 'react';
+import { useMotionTemplate, motion } from 'motion/react';
+import { cn } from '@/lib/utils';
 
 export const EvervaultCard = ({
   text,
@@ -14,7 +14,7 @@ export const EvervaultCard = ({
   let mouseX = useMotionValue(0);
   let mouseY = useMotionValue(0);
 
-  const [randomString, setRandomString] = useState("");
+  const [randomString, setRandomString] = useState('');
 
   useEffect(() => {
     let str = generateRandomString(1500);
@@ -33,7 +33,7 @@ export const EvervaultCard = ({
   return (
     <div
       className={cn(
-        "p-0.5  bg-transparent aspect-square  flex items-center justify-center w-full h-full relative",
+        'p-0.5  bg-transparent aspect-square  flex items-center justify-center w-full h-full relative',
         className
       )}
     >
@@ -81,9 +81,9 @@ export function CardPattern({ mouseX, mouseY, randomString }: any) {
 }
 
 const characters =
-  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 export const generateRandomString = (length: number) => {
-  let result = "";
+  let result = '';
   for (let i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * characters.length));
   }

@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
-import { motion } from "framer-motion";
+import React from 'react';
+import { motion } from 'framer-motion';
 
 const DURATION = 0.25;
 const STAGGER = 0.025;
@@ -22,19 +22,19 @@ const FlipLink: React.FC<FlipLinkProps> = ({ children, href }) => {
       }}
     >
       <div>
-        {children.split("").map((l, i) => (
+        {children.split('').map((l, i) => (
           <motion.span
             variants={{
               initial: {
                 y: 0,
               },
               hovered: {
-                y: "-100%",
+                y: '-100%',
               },
             }}
             transition={{
               duration: DURATION,
-              ease: "easeInOut",
+              ease: 'easeInOut',
               delay: STAGGER * i,
             }}
             className="inline-block"
@@ -45,11 +45,11 @@ const FlipLink: React.FC<FlipLinkProps> = ({ children, href }) => {
         ))}
       </div>
       <div className="absolute inset-0">
-        {children.split("").map((l, i) => (
+        {children.split('').map((l, i) => (
           <motion.span
             variants={{
               initial: {
-                y: "100%",
+                y: '100%',
               },
               hovered: {
                 y: 0,
@@ -57,7 +57,7 @@ const FlipLink: React.FC<FlipLinkProps> = ({ children, href }) => {
             }}
             transition={{
               duration: DURATION,
-              ease: "easeInOut",
+              ease: 'easeInOut',
               delay: STAGGER * i,
             }}
             className="inline-block"

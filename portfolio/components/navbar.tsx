@@ -1,39 +1,39 @@
-"use client";
+'use client';
 
-import React, { useEffect, useRef } from "react";
-import { cn } from "@/lib/utils";
-import { Home, User, Briefcase, Code, Award, Mail } from "lucide-react";
-import Lenis from "lenis";
+import React, { useEffect, useRef } from 'react';
+import { cn } from '@/lib/utils';
+import { Home, User, Briefcase, Code, Award, Mail } from 'lucide-react';
+import Lenis from 'lenis';
 
 const navItems = [
   {
-    name: "Home",
-    link: "#home",
+    name: 'Home',
+    link: '#home',
     icon: <Home className="h-4 w-4" />,
   },
   {
-    name: "About",
-    link: "#about",
+    name: 'About',
+    link: '#about',
     icon: <User className="h-4 w-4" />,
   },
   {
-    name: "Projects",
-    link: "#projects",
+    name: 'Projects',
+    link: '#projects',
     icon: <Briefcase className="h-4 w-4" />,
   },
   {
-    name: "Skills",
-    link: "#skills",
+    name: 'Skills',
+    link: '#skills',
     icon: <Code className="h-4 w-4" />,
   },
   {
-    name: "Experience",
-    link: "#experience",
+    name: 'Experience',
+    link: '#experience',
     icon: <Award className="h-4 w-4" />,
   },
   {
-    name: "Contact",
-    link: "#contact",
+    name: 'Contact',
+    link: '#contact',
     icon: <Mail className="h-4 w-4" />,
   },
 ];
@@ -68,9 +68,9 @@ export function Navbar() {
           {navItems.map((navItem: any, idx: number) => (
             <button
               key={`link=${idx}`}
-              onClick={() => scrollToSection(navItem.link.replace("#", ""))}
+              onClick={() => scrollToSection(navItem.link.replace('#', ''))}
               className={cn(
-                "relative items-center flex space-x-1 text-gray-700 hover:text-blue-600 transition-colors duration-300 font-dancing-script cursor-pointer"
+                'relative items-center flex space-x-1 text-gray-700 hover:text-blue-600 transition-colors duration-300 font-dancing-script cursor-pointer'
               )}
             >
               <span className="block sm:hidden">{navItem.icon}</span>

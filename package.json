@@ -1,0 +1,11 @@
+{
+    "name": "my-portfolio",
+    "version": "1.0.0",
+    "scripts": {
+        "dev": "bun --cwd portfolio run dev",
+        "build": "bun --cwd portfolio run build",
+        "start": "bun --cwd portfolio run start",
+        "lint": "bun --cwd portfolio run lint",
+        "format": "bun --cwd portfolio run format"
+    }
+}

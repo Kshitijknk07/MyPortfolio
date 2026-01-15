@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { LucideIcon } from "lucide-react";
-import { useOnClickOutside } from "usehooks-ts";
+import * as React from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { LucideIcon } from 'lucide-react';
+import { useOnClickOutside } from 'usehooks-ts';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 interface Tab {
   title: string;
@@ -14,7 +14,7 @@ interface Tab {
 }
 
 interface Separator {
-  type: "separator";
+  type: 'separator';
   title?: never;
   icon?: never;
 }
@@ -31,25 +31,25 @@ interface ExpandedTabsProps {
 const buttonVariants = {
   initial: {
     gap: 0,
-    paddingLeft: ".5rem",
-    paddingRight: ".5rem",
+    paddingLeft: '.5rem',
+    paddingRight: '.5rem',
   },
   animate: (isSelected: boolean) => ({
-    gap: isSelected ? ".5rem" : 0,
-    paddingLeft: isSelected ? "1rem" : ".5rem",
-    paddingRight: isSelected ? "1rem" : ".5rem",
+    gap: isSelected ? '.5rem' : 0,
+    paddingLeft: isSelected ? '1rem' : '.5rem',
+    paddingRight: isSelected ? '1rem' : '.5rem',
   }),
 };
 
 const spanVariants = {
   initial: { width: 0, opacity: 0 },
-  animate: { width: "auto", opacity: 1 },
+  animate: { width: 'auto', opacity: 1 },
   exit: { width: 0, opacity: 0 },
 };
 
 const transition = {
   delay: 0.1,
-  type: "spring" as const,
+  type: 'spring' as const,
   bounce: 0,
   duration: 0.6,
 };
@@ -57,7 +57,7 @@ const transition = {
 export function ExpandedTabs({
   tabs,
   className,
-  activeColor = "text-primary",
+  activeColor = 'text-primary',
   onChange,
 }: ExpandedTabsProps) {
   const [selected, setSelected] = React.useState<number | null>(null);
@@ -83,12 +83,12 @@ export function ExpandedTabs({
     <div
       ref={outsideClickRef}
       className={cn(
-        " flex gap-2 rounded-2xl border bg-background p-1 shadow-sm ",
+        ' flex gap-2 rounded-2xl border bg-background p-1 shadow-sm ',
         className
       )}
     >
       {tabs.map((tab, index) => {
-        if (tab.type === "separator") {
+        if (tab.type === 'separator') {
           return <Separator key={`separator-${index}`} />;
         }
 
@@ -103,10 +103,10 @@ export function ExpandedTabs({
             onClick={() => handleSelect(index)}
             transition={transition}
             className={cn(
-              "relative flex items-center rounded-xl px-4 py-2 text-sm font-medium transition-colors duration-300",
+              'relative flex items-center rounded-xl px-4 py-2 text-sm font-medium transition-colors duration-300',
               selected === index
-                ? cn("bg-muted", activeColor)
-                : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                ? cn('bg-muted', activeColor)
+                : 'text-muted-foreground hover:bg-muted hover:text-foreground'
             )}
           >
             <Icon size={20} />

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
-import Lenis from "lenis";
+import { useEffect } from 'react';
+import Lenis from 'lenis';
 
 interface LenisProviderProps {
   children: React.ReactNode;

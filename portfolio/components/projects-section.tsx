@@ -1,7 +1,7 @@
-"use client";
-import React from "react";
-import { AnimatePresence, motion } from "motion/react";
-import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
+'use client';
+import React from 'react';
+import { AnimatePresence, motion } from 'motion/react';
+import { CanvasRevealEffect } from '@/components/ui/canvas-reveal-effect';
 
 export function ProjectsSection() {
   return (
@@ -10,45 +10,60 @@ export function ProjectsSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-light text-black leading-tight mb-4">
-            My{" "}
+            My{' '}
             <span className="font-dancing-script text-5xl md:text-6xl bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 bg-clip-text text-transparent">
               Projects
             </span>
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            From full-stack applications to innovative AI solutions, each project represents a unique challenge and learning experience. I focus on creating user-centric experiences that combine cutting-edge technology with elegant design principles.
+            From full-stack applications to innovative AI solutions, each
+            project represents a unique challenge and learning experience. I
+            focus on creating user-centric experiences that combine cutting-edge
+            technology with elegant design principles.
           </p>
         </div>
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-          <ProjectCard 
-            title="E-Commerce Platform" 
+          <ProjectCard
+            title="E-Commerce Platform"
             description="Full-stack e-commerce solution with payment integration"
-            techStack={["React", "Node.js", "MongoDB", "Stripe"]}
+            techStack={['React', 'Node.js', 'MongoDB', 'Stripe']}
             icon={<CodeIcon />}
-            colors={[[59, 130, 246], [147, 51, 234]]}
+            colors={[
+              [59, 130, 246],
+              [147, 51, 234],
+            ]}
           />
-          <ProjectCard 
-            title="Task Management App" 
+          <ProjectCard
+            title="Task Management App"
             description="Collaborative project management with real-time updates"
-            techStack={["Next.js", "TypeScript", "Prisma", "Socket.io"]}
+            techStack={['Next.js', 'TypeScript', 'Prisma', 'Socket.io']}
             icon={<TaskIcon />}
-            colors={[[34, 197, 94], [16, 185, 129]]}
+            colors={[
+              [34, 197, 94],
+              [16, 185, 129],
+            ]}
           />
-          <ProjectCard 
-            title="AI Chat Assistant" 
+          <ProjectCard
+            title="AI Chat Assistant"
             description="Intelligent chatbot powered by machine learning"
-            techStack={["Python", "TensorFlow", "FastAPI", "Redis"]}
+            techStack={['Python', 'TensorFlow', 'FastAPI', 'Redis']}
             icon={<AIIcon />}
-            colors={[[239, 68, 68], [220, 38, 127]]}
+            colors={[
+              [239, 68, 68],
+              [220, 38, 127],
+            ]}
           />
-          <ProjectCard 
-            title="Portfolio Website" 
+          <ProjectCard
+            title="Portfolio Website"
             description="Modern responsive portfolio with smooth animations"
-            techStack={["React", "Tailwind CSS", "Framer Motion", "Vercel"]}
+            techStack={['React', 'Tailwind CSS', 'Framer Motion', 'Vercel']}
             icon={<PortfolioIcon />}
-            colors={[[6, 182, 212], [14, 165, 233]]}
+            colors={[
+              [6, 182, 212],
+              [14, 165, 233],
+            ]}
           />
         </div>
       </div>
@@ -70,7 +85,7 @@ const ProjectCard = ({
   colors: number[][];
 }) => {
   const [hovered, setHovered] = React.useState(false);
-  
+
   return (
     <div
       onMouseEnter={() => setHovered(true)}
@@ -105,15 +120,15 @@ const ProjectCard = ({
         <div className="group-hover/canvas-card:-translate-y-4 group-hover/canvas-card:opacity-0 transition duration-200 w-full mx-auto flex items-center justify-center mb-4">
           {icon}
         </div>
-        
+
         <h3 className="text-xl font-semibold text-black group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-200 mb-3">
           {title}
         </h3>
-        
+
         <p className="text-sm text-gray-600 group-hover/canvas-card:text-white/90 group-hover/canvas-card:-translate-y-2 transition duration-200 mb-4 line-clamp-3">
           {description}
         </p>
-        
+
         <div className="flex flex-wrap gap-2 justify-center group-hover/canvas-card:-translate-y-2 transition duration-200">
           {techStack.map((tech, index) => (
             <span

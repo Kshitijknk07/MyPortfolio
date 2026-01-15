@@ -1,4 +1,4 @@
-import { Mail, Github, Linkedin, Globe } from "lucide-react";
+import { Mail, Github, Linkedin } from 'lucide-react';
 
 export function AboutSection() {
   return (
@@ -34,7 +34,7 @@ export function AboutSection() {
               {/* Main Heading */}
               <div className="space-y-6">
                 <h2 className="text-4xl md:text-5xl font-light text-black leading-tight">
-                  My{" "}
+                  My{' '}
                   <span className="font-dancing-script text-5xl md:text-6xl bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 bg-clip-text text-transparent">
                     About
                   </span>
@@ -47,18 +47,24 @@ export function AboutSection() {
                 <p>
                   I've spent the past 3+ years working across different areas of
                   web development: front-end development, back-end systems,
-                  database design, and API development. My journey has been driven by a passion for creating seamless digital experiences that solve real-world problems.
+                  database design, and API development. My journey has been
+                  driven by a passion for creating seamless digital experiences
+                  that solve real-world problems.
                 </p>
 
                 <p>
                   These days my time is spent researching, designing,
                   prototyping, and coding modern web applications. I also help
                   developers get started with their careers through open-source
-                  contributions and mentoring programs. Every project is an opportunity to push boundaries and explore new technologies.
+                  contributions and mentoring programs. Every project is an
+                  opportunity to push boundaries and explore new technologies.
                 </p>
 
                 <p>
-                  When I'm not coding, you'll find me contributing to open-source projects, writing technical articles, or exploring the latest trends in web development. I believe in continuous learning and sharing knowledge with the developer community.
+                  When I'm not coding, you'll find me contributing to
+                  open-source projects, writing technical articles, or exploring
+                  the latest trends in web development. I believe in continuous
+                  learning and sharing knowledge with the developer community.
                 </p>
               </div>
 
@@ -69,17 +75,17 @@ export function AboutSection() {
                 </h3>
                 <div className="flex flex-wrap gap-3">
                   {[
-                    "React",
-                    "Next.js",
-                    "TypeScript",
-                    "Node.js",
-                    "Python",
-                    "PostgreSQL",
-                    "MongoDB",
-                    "AWS",
-                    "Docker",
-                    "Git",
-                    "Tailwind CSS",
+                    'React',
+                    'Next.js',
+                    'TypeScript',
+                    'Node.js',
+                    'Python',
+                    'PostgreSQL',
+                    'MongoDB',
+                    'AWS',
+                    'Docker',
+                    'Git',
+                    'Tailwind CSS',
                   ].map((tech) => (
                     <span
                       key={tech}

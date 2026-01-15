@@ -1,5 +1,5 @@
-import { ArrowRight, Download, Mail } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { ArrowRight, Download, Mail } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export function HeroSection() {
   return (
@@ -10,9 +10,9 @@ export function HeroSection() {
       {/* Grid Background */}
       <div
         className={cn(
-          "absolute inset-0",
-          "[background-size:40px_40px]",
-          "[background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]"
+          'absolute inset-0',
+          '[background-size:40px_40px]',
+          '[background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]'
         )}
       />
 
@@ -25,7 +25,7 @@ export function HeroSection() {
           {/* Main Heading */}
           <div className="space-y-6">
             <h1 className="text-4xl md:text-6xl font-light text-black leading-tight">
-              Hi, I'm{" "}
+              Hi, I'm{' '}
               <span className="font-dancing-script text-5xl md:text-7xl bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 bg-clip-text text-transparent drop-shadow-sm">
                 Kshitij Narayan Kulkarni
               </span>
